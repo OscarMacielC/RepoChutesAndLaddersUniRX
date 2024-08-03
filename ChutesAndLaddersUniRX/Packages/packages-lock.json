@@ -14,6 +14,13 @@
       "dependencies": {},
       "hash": "6baeccf6c544c155497164327cca72f28163a578"
     },
+    "com.svermeulen.extenject": {
+      "version": "https://github.com/Mathijs-Bakker/Extenject.git?path=UnityProject/Assets/Plugins/Zenject",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "76068b095fc32b89af0ff191114ba82d22a7d3d8"
+    },
     "com.unity.collab-proxy": {
       "version": "2.4.4",
       "depth": 0,
