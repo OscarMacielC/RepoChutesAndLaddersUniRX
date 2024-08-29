@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -24,7 +22,7 @@ public abstract class Character : MonoBehaviour
     }
 
 
-    [SerializeField] protected Route Route;
+    //[SerializeField] protected Route Route;
     [SerializeField] protected int actualNodeIdx;
     [SerializeField] protected Node actualNode;
 
@@ -43,7 +41,7 @@ public abstract class Character : MonoBehaviour
     {
         type = Characters.Ghost;
         TurnOrder = -1;
-        actualNode = Route.GetFirstNode();
+        //actualNode = Route.GetFirstNode();
         actualNodeIdx = actualNode.Id;
     }
 
@@ -58,7 +56,7 @@ public abstract class Character : MonoBehaviour
         isMoving = true;
         while (stepsRemaining > 0)
         {
-            actualNode = Route.GetNextNode(actualNode);
+            //actualNode = Route.GetNextNode(actualNode);
             actualNodeIdx = actualNode.Id;
             var nextPos = actualNode.GetPosition();
 
@@ -120,20 +118,20 @@ public abstract class Character : MonoBehaviour
                (transform.position = Vector3.MoveTowards(transform.position, nextPos, speed * Time.deltaTime));
     }
 
-    public bool MakeTurn(int stepsToMove)
-    {
-        stepsRemaining = stepsToMove;
-        if (Route.DoesNodeExist(actualNode, stepsToMove))
-        {
-            //StartCoroutine(Move());
-            return true;
-        }
-        else
-        {
-            print("Number is to High");
-            return false;
-        }
-    }
+    // public bool MakeTurn(int stepsToMove)
+    // {
+    //     stepsRemaining = stepsToMove;
+    //     if (Route.DoesNodeExist(actualNode, stepsToMove))
+    //     {
+    //         //StartCoroutine(Move());
+    //         return true;
+    //     }
+    //     else
+    //     {
+    //         print("Number is to High");
+    //         return false;
+    //     }
+    // }
 
     private void Update()
     {

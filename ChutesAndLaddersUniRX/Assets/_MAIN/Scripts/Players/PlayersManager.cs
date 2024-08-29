@@ -13,8 +13,8 @@ namespace ChutesAndLadders.Managers
     public partial class PlayersManager
     {
         private readonly DataSubject<int> _onPlayerSelectedSubject = new(FIRST_PLAYER_IDX);
+        private readonly List<Subject<int>> _onPlayerMoveSubjectList = new();
         private readonly Subject<IReadOnlyList<(int index, PlayerType type)>> _onInitialPlayerListSubject = new();
-        private CharacterInitializer _characterInitializer;
         private List<(int index, PlayerType type)> _playersTypeList = new();
 
         private const int FIRST_PLAYER_IDX = 0;
@@ -45,7 +45,14 @@ namespace ChutesAndLadders.Managers
             {
                 _playersTypeList.Add((i, PlayerType.Bot));
             }
+            
             _onInitialPlayerListSubject.OnNext(_playersTypeList);
+            
+            _onPlayerMoveSubjectList.Clear();
+            for (var i = 0; i < numberOfPlayers; i++)
+            {
+                _onPlayerMoveSubjectList.Add(new Subject<int>());
+            }
         }
     }
 
