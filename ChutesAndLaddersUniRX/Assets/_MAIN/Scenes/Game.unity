@@ -5424,6 +5424,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c50d7b5354eb2054eb6f26270aab5988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &743595646
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 743595648}
+  - component: {fileID: 743595647}
+  - component: {fileID: 743595649}
+  m_Layer: 0
+  m_Name: MainInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &743595647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743595646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47cf1ce540399f4488a67a910c84e8de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &743595648
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743595646}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.608228, y: 13.455368, z: 21.837055}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &743595649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743595646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 743595647}
+  _installerPrefabs: []
+  _findSiblingMonoInstallers: 0
+  _autoRun: 1
+  OnPreInstall:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostInstall:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPreResolve:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostResolve:
+    m_PersistentCalls:
+      m_Calls: []
+  _parentNewObjectsUnderSceneContext: 0
+  _contractNames: []
+  _parentContractNames: []
 --- !u!1 &765381599
 GameObject:
   m_ObjectHideFlags: 0
@@ -5433,7 +5511,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 765381601}
-  - component: {fileID: 765381600}
   m_Layer: 0
   m_Name: CharacterInitializer
   m_TagString: Untagged
@@ -5441,28 +5518,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &765381600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 765381599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 649e8acd4515640438d0aa81ef2ed6e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _initPositions:
-  - {fileID: 1118934006}
-  - {fileID: 1742954823}
-  - {fileID: 770949878}
-  - {fileID: 1956065313}
-  - {fileID: 366919366}
-  - {fileID: 297567193}
-  - {fileID: 243722341}
-  - {fileID: 1447611103}
-  - {fileID: 341298950}
 --- !u!4 &765381601
 Transform:
   m_ObjectHideFlags: 0
@@ -8574,7 +8629,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1517634067}
-  - component: {fileID: 1517634066}
   m_Layer: 0
   m_Name: PlayersController
   m_TagString: Untagged
@@ -8582,21 +8636,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1517634066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1517634065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27fa453d82901a948a1e0df7bbd176f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  charactersList: []
-  activeCharacter: {fileID: 0}
-  activeCharacterIdx: 0
 --- !u!4 &1517634067
 Transform:
   m_ObjectHideFlags: 0
@@ -11438,3 +11477,4 @@ SceneRoots:
   - {fileID: 765381601}
   - {fileID: 553295740}
   - {fileID: 1517634067}
+  - {fileID: 743595648}

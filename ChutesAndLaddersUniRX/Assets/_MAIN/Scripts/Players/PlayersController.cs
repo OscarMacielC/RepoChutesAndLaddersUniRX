@@ -17,6 +17,7 @@ namespace ChutesAndLadders.Managers
         {
             _playersSource.OnPlayerListInitialized.Subscribe().AddTo(this);
             _playersSource.OnSelectedCharacter.Subscribe(SelectCharacter).AddTo(this);
+            
             foreach (var character in charactersList)
             {
                 //character.transform.position = _characterInitializer.GetNPosition(character.TurnOrder);
@@ -28,7 +29,7 @@ namespace ChutesAndLadders.Managers
         {
             if (activeCharacterIdx >= charactersList.Count)
             {
-                //activeCharacterIdx = STARTING_CHARACTER;
+                activeCharacterIdx = 0;//activeCharacterIdx = STARTING_CHARACTER;
             }
 
             activeCharacter = charactersList[activeCharacterIdx];
