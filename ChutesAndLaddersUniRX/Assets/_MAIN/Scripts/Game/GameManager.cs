@@ -10,12 +10,11 @@ namespace ChutesAndLadders.Game
     public partial class GameManager
     {
         [Inject] private IDeckSource _deckSource;
-        private readonly Subject<int> _onTurnStartedSubject = new();
+        private readonly Subject<int> _onTurnEndedSubject = new();
         private readonly Subject<int> _onDiceRolledSubject = new();
         private Turn _currentTurn;
+        private int _turnId;
 
-
-        
         private async UniTaskVoid ExecuteTurn()
         {
             foreach (var movement in _currentTurn.MovementsList)
@@ -30,7 +29,11 @@ namespace ChutesAndLadders.Game
                         break;
                 }
             }
+
             await UniTask.Delay(TimeSpan.FromSeconds(1));
+            _turnId++;
+            _onTurnEndedSubject.OnNext(_turnId);
+            
         }
 
         private async UniTask ExecuteRollDiceMovement(RollDiceMovement rollDiceMovement)
@@ -52,28 +55,27 @@ namespace ChutesAndLadders.Game
         {
             StartGame();
         }
-        
+
         public void StartGame()
         {
             CreateNewTurn();
         }
-        
+
         public void CreateNewTurn()
         {
             _currentTurn = new Turn();
             var diceResult = _deckSource.RollDie(6);
-            Debug.Log($"Rolled a {diceResult}");
-            
+            _onDiceRolledSubject.OnNext(_turnId);
             _currentTurn.AddMovement(new RollDiceMovement(diceResult));
             _currentTurn.AddMovement(new MovePlayerMovement(diceResult));
             
             ExecuteTurn().Forget();
         }
     }
-    
+
     public partial class GameManager : IGameSource
     {
-        public IObservable<int> OnTurnStarted => _onTurnStartedSubject.AsObservable();
+        public IObservable<int> OnTurnEnded => _onTurnEndedSubject.AsObservable();
         public IObservable<int> OnDiceRolled => _onDiceRolledSubject.AsObservable();
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ChutesAndLadders.Managers;
+using TMPro;
 using UnityEngine;
 using Zenject;
 using UniRx;
@@ -8,28 +9,25 @@ namespace ChutesAndLadders.Game
     public partial class GameController : MonoBehaviour
     {
         [Inject] private IGameSource _gameSource;
+        
         [SerializeField] private GameObject player;
         [SerializeField] private BoardController boardController;
+        [SerializeField] private TextMeshProUGUI turnText;
+        
         private GameManager _gameManager;
-
+        
         private void Start()
         {
-            _gameSource.OnTurnStarted.Subscribe(turnId =>
+            _gameSource.OnTurnEnded.Subscribe(turnId =>
             {
-                Debug.Log($"New Turn Started: {turnId}");
+                Debug.Log($"GC Turn Ended: {turnId}");
+                turnText.text = $"Turn: {turnId}";
             }).AddTo(this);
             
             _gameSource.OnDiceRolled.Subscribe(diceResult =>
             {
-                Debug.Log($"Dice Rolled: {diceResult}");
+                Debug.Log($"GC Dice Rolled: {diceResult}");
             }).AddTo(this);
-        }
-
-        private void Update()
-        {
-            if (!Input.GetKeyDown(KeyCode.Space)) return;
-            Debug.Log("Player should move to next node");
-            NextTurn();
         }
 
         public void NextTurn()

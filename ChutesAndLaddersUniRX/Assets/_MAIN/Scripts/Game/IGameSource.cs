@@ -7,7 +7,7 @@ namespace ChutesAndLadders.Game
         void StartGame();
         void CreateNewTurn();
         
-        IObservable<int> OnTurnStarted { get; }
+        IObservable<int> OnTurnEnded { get; }
         IObservable<int> OnDiceRolled { get; }
     }
 }
