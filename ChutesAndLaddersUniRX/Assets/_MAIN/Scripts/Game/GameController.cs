@@ -14,14 +14,11 @@ namespace ChutesAndLadders.Game
         [SerializeField] private BoardController boardController;
         [SerializeField] private TextMeshProUGUI turnText;
         
-        private GameManager _gameManager;
-        
         private void Start()
         {
             _gameSource.OnTurnEnded.Subscribe(turnId =>
             {
                 Debug.Log($"GC Turn Ended: {turnId}");
-                turnText.text = $"Turn: {turnId}";
             }).AddTo(this);
             
             _gameSource.OnDiceRolled.Subscribe(diceResult =>
@@ -29,11 +26,5 @@ namespace ChutesAndLadders.Game
                 Debug.Log($"GC Dice Rolled: {diceResult}");
             }).AddTo(this);
         }
-
-        public void NextTurn()
-        {
-            _gameSource.CreateNewTurn();
-        }
-        
     }
 }
